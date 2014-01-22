@@ -1,1 +1,1 @@
-java -cp {EVALUATOR_HOME}/lib/*.jar com.tw.rajkum.cli.Evaluator "${@}"
+java -cp ${EVALUATOR_HOME}/lib/expression-evaluator.jar com.tw.rajkum.cli.Evaluator "${@}"

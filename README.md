@@ -15,7 +15,10 @@ Expression Evaluator
 
 ###Version 0.1 Ready
 
-    It takes simple input of 2 numbers from the command line.
+    It takes simple input of 2 numbers and addition operator.
+    To be run from the command line.
     Adds them and gives the result.
-
+    Allows integer numbers - positive as well as negative.
+    Space in between number and operators.
+    
     e.g. calculate "4 + 5"

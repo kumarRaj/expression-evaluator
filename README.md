@@ -1,6 +1,6 @@
 Expression Evaluator
 --------------------
-###To Test :
+###To Use :
     git clone this repository.
     Use ant and get a distribution by using
         `ant dist`
@@ -13,6 +13,18 @@ Expression Evaluator
 
     Thats all now you can run and test by typing calculate and expression in quotes.
 
+###Version 0.2 Ready
+
+    Gives new feature of following opoerators.
+         - , * , / , ^
+    You can subtract, multiply,divide,and find power for 2 operators.
+        e.g.calculate "6 - -2"
+            calculate "6 * -2"
+            calculate "6 / -2"
+            calculate "6 ^ 2"
+    Bugs :
+    Power for negative numbers is not possible.
+
 ###Version 0.1 Ready
 
     It takes simple input of 2 numbers and addition operator.
@@ -22,3 +34,6 @@ Expression Evaluator
     Space in between number and operators.
     
     e.g. calculate "4 + 5"
+
+
+

@@ -15,8 +15,10 @@ Expression Evaluator
 ###Version 0.3
     Added features :
     You can give input without spaces in between numbers.
+
     e.g. calculate "2+2"
-    Bug
+    Bug Fixed for power of negative numbers.
+    Bug:    Fractional part of decimal numbers is not only 2 digits.
 ###Version 0.2
 
     Gives new feature of following opoerators.

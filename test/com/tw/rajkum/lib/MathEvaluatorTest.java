@@ -45,4 +45,46 @@ public class MathEvaluatorTest {
     public void testPowerUsingEvaluator() throws Exception {
         assertEquals(64,new MathEvaluator().calculate("4 ^ 3"),1);
     }
+    @Test
+    public void testTrimSpacesOnRightOfExpression() {
+        String input = "4 + 4  ";
+        String expected = "4 + 4";
+
+        assertEquals(expected,new MathEvaluator().parseInput(input));
+    }
+    @Test
+    public void testTrimSpacesOnLeftOfExpression() {
+        String input = "   4 + 4  ";
+        String expected = "4 + 4";
+
+        assertEquals(expected,new MathEvaluator().parseInput(input));
+    }
+    @Test
+    public void testRemoveExtraSpacesInBetweenExpression() {
+        String input = "   4 +   4  ";
+        String expected = "4 + 4";
+
+        assertEquals(expected,new MathEvaluator().parseInput(input));
+    }
+    @Test
+    public void testAddSpacesIfNoSpacesInExpressionForPlus() {
+        String input = "4+4";
+        String expected = "4 + 4";
+
+        assertEquals(expected,new MathEvaluator().parseInput(input));
+    }
+    @Test
+    public void testAddSpacesIfNoSpacesInExpressionForMinus() {
+        String input = "4-4";
+        String expected = "4 - 4";
+
+        assertEquals(expected,new MathEvaluator().parseInput(input));
+    }
+    @Test
+    public void parseIncorrectExpression() {
+        String input = "4*   78 + 98/2";
+        String expected = "4 * 78 + 98 / 2";
+
+        assertEquals(expected,new MathEvaluator().parseInput(input));
+    }
 }

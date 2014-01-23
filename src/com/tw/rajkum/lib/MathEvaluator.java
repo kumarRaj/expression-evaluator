@@ -24,4 +24,13 @@ public class MathEvaluator {
             }
         }
     }
+
+    public String parseInput(String input) {
+        return input.trim().replaceAll(" +","")
+                .replaceAll("\\+"," + ")
+                .replaceAll("\\-"," - ")
+                .replaceAll("\\*"," * ")
+                .replaceAll("\\/"," / ")
+                .replaceAll("\\^"," ^ ");
+    }
 }

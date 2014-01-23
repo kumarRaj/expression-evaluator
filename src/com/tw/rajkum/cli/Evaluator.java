@@ -4,6 +4,8 @@ import com.tw.rajkum.lib.MathEvaluator;
 
 public class Evaluator {
     public static void main(String[] args) {
-        System.out.println(new MathEvaluator().calculate(args[0]));
+        MathEvaluator evaluator = new MathEvaluator();
+        String formattedInput = evaluator.parseInput(args[0]);
+        System.out.println(evaluator.calculate(formattedInput));
     }
 }

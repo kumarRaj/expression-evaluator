@@ -12,8 +12,11 @@ Expression Evaluator
         _____
 
     Thats all now you can run and test by typing calculate and expression in quotes.
-
-###Version 0.2 Ready
+###Version 0.3
+    Added features :
+    You can give input without spaces in between numbers.
+    e.g. calculate "2+2"
+###Version 0.2
 
     Gives new feature of following opoerators.
          - , * , / , ^
@@ -25,7 +28,7 @@ Expression Evaluator
     Bugs :
     Power for negative numbers is not possible.
 
-###Version 0.1 Ready
+###Version 0.1
 
     It takes simple input of 2 numbers and addition operator.
     To be run from the command line.

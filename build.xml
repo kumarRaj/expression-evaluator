@@ -1,4 +1,4 @@
-<project name = "expression-evaluator">
+<project name = "expression-evaluator" >
     <property file="build.properties" />
     <target name="init">
         <mkdir dir="${build.dir}"/>

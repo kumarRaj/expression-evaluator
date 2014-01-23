@@ -16,6 +16,7 @@ Expression Evaluator
     Added features :
     You can give input without spaces in between numbers.
     e.g. calculate "2+2"
+    Bug
 ###Version 0.2
 
     Gives new feature of following opoerators.

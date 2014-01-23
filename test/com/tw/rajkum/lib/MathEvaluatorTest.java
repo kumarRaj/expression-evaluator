@@ -89,9 +89,17 @@ public class MathEvaluatorTest {
     }
     @Test
     public void parseNegativeNumber() {
-        String input = "4+-2";
+        String input = "4--2";
         String expected = "4 - -2";
 
         assertEquals(expected,new MathEvaluator().parseInput(input));
     }
+    @Test
+    public void parseNegativeNumberInStartingOfExpression() {
+        String input = "-4--2";
+        String expected = "-4 - -2";
+
+        assertEquals(expected,new MathEvaluator().parseInput(input));
+    }
+
 }

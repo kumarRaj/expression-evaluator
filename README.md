@@ -12,7 +12,17 @@ Expression Evaluator
         _____
 
     Thats all now you can run and test by typing calculate and expression in quotes.
+###Version 0.4
+    Added Features :
+    Support for multiple operators and operands.
+    e.g. "2 + 3 * 4"
+         "2 ^ 2 - 2"
+    Bug fixed of extra digits of decimal.
+    Now only 2 digits of decimal are coming.
+    e.g. "22/7" gives 3.14
+
 ###Version 0.3
+
     Added features :
     You can give input without spaces in between numbers.
 

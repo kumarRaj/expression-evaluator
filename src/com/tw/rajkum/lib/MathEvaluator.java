@@ -4,6 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MathEvaluator {
+
+    public String evaluateExpression(String expression){
+        String formattedExpression = parseInput(expression);
+        Double result = calculate(formattedExpression);
+        String stringResult = result.toString();
+        int indexOfPoint = stringResult.indexOf('.');
+        try{
+            return stringResult.substring(0, indexOfPoint + 3);
+        } catch (StringIndexOutOfBoundsException ex){
+            return stringResult;
+        }
+    }
+
     public double calculate(String expression) {
         String input[] = expression.split(" ");
         List<Double> numbers = new ArrayList<Double>();
@@ -32,7 +45,7 @@ public class MathEvaluator {
                 .replaceAll("\\*", " * ")
                 .replaceAll("\\/", " / ")
                 .replaceAll("\\^", " ^ ")
-                .replaceAll("  - "," -")
-                .replaceFirst("^ - ","-");
+                .replaceAll("  - ", " -")
+                .replaceFirst("^ - ", "-");
     }
 }

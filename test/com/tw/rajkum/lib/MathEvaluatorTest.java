@@ -101,5 +101,25 @@ public class MathEvaluatorTest {
 
         assertEquals(expected,new MathEvaluator().parseInput(input));
     }
+    @Test
+    public void calculateExpressionWithMultipleOperators() {
+        String input = "4*   7 + 9 -2";
+        String expected = "35.0";
 
+        assertEquals(expected, new MathEvaluator().evaluateExpression(input));
+    }
+    @Test
+    public void calculateExpressionWithMultipleOperatorsWithPower() {
+        String input = "4* 3 ^2";
+        String expected = "144.0";
+
+        assertEquals(expected,new MathEvaluator().evaluateExpression(input));
+    }
+    @Test
+    public void calculateExpressionWithResultAsMultipleDigitsAfterDecimal() {
+        String input = "22/7";
+        String expected = "3.14";
+
+        assertEquals(expected,new MathEvaluator().evaluateExpression(input));
+    }
 }

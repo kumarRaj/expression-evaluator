@@ -26,7 +26,6 @@ public class MathEvaluator {
     }
 
     public String parseInput(String input) {
-//        input = input;
         return input.trim().replaceAll(" +", "")
                 .replaceAll("\\+", " + ")
                 .replaceAll("\\-"," - ")

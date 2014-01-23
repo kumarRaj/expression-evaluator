@@ -140,7 +140,6 @@
     <target name="dist" depends="clear,copyReadme">
         <zip zipfile="${dist.src.dir}/expression-evaluator.zip" basedir="${dist.src.dir}"/>
         <delete dir="${dist.src.dir}/bin"/>
-        <delete dir="${dist.src.dir}/lib"/>
         <delete file="${dist.src.dir}/README.md"/>
     </target>
 

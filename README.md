@@ -12,9 +12,20 @@ Expression Evaluator
         _____
 
     Thats all now you can run and test by typing calculate and expression in quotes.
+
+###Version 0.5
+
+    Added Features :
+    Support for decimal points.
+    e.g. "2.5 + 3.1" gives "5.6"
+    e.g. "2 ^ 3.0" gives "8.0"
+
+
 ###Version 0.4
+
     Added Features :
     Support for multiple operators and operands.
+    It calculates in precedence of left to right.
     e.g. "2 + 3 * 4"
          "2 ^ 2 - 2"
     Bug fixed of extra digits of decimal.
@@ -29,6 +40,7 @@ Expression Evaluator
     e.g. calculate "2+2"
     Bug Fixed for power of negative numbers.
     Bug:    Fractional part of decimal numbers is not only 2 digits.
+
 ###Version 0.2
 
     Gives new feature of following opoerators.
@@ -50,6 +62,3 @@ Expression Evaluator
     Space in between number and operators.
     
     e.g. calculate "4 + 5"
-
-
-

@@ -87,4 +87,11 @@ public class MathEvaluatorTest {
 
         assertEquals(expected,new MathEvaluator().parseInput(input));
     }
+    @Test
+    public void parseNegativeNumber() {
+        String input = "4+-2";
+        String expected = "4 - -2";
+
+        assertEquals(expected,new MathEvaluator().parseInput(input));
+    }
 }

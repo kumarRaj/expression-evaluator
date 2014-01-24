@@ -164,18 +164,20 @@ public class MathEvaluatorTest {
         assertEquals(expected, new MathEvaluator().evaluateExpression(input), 1);
     }
 
-//    @Test
-//    public void getInnerExpressionWithMultipleBrackets() {
-//        String input = "2 + (3 + 4) + 5";
-//        List<String> expectedNumbers = new ArrayList<String>();
-//        List<String> expectedOperators = new ArrayList<String>();
-//        expectedNumbers.add("2");expectedNumbers.add("7");expectedNumbers.add("5");
-//        expectedNumbers.add("+");expectedNumbers.add("+");
-//        MathEvaluator test = new MathEvaluator();
-//        List<Double> numbers = new ArrayList<Double>();
-//        List<String> operators = new ArrayList<String>();
-//        test.getNumbersAndOperators(input, numbers, operators);
-//        assertEquals(expectedNumbers, numbers);
-//        assertEquals(expectedOperators, operators);
-//    }
+    @Test
+    public void testNegative1() {
+        String input = "(-1)";
+        double expected = -1;
+
+        assertEquals(expected, new MathEvaluator().evaluateExpression(input), 1);
+    }
+
+    @Test
+    public void testNegative2() {
+        String input = "((-1)-(-1))";
+        double expected = -1;
+
+        assertEquals(expected, new MathEvaluator().evaluateExpression(input), 1);
+    }
+
 }

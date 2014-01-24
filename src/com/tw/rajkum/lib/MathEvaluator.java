@@ -10,6 +10,7 @@ public class MathEvaluator {
         List<String> operators = new ArrayList<String>();
         String inner = getInnerExpression(formattedExpression);
         if (inner != null) {
+            System.out.println(inner);
             getNumbersAndOperators(inner.substring(1, inner.length() - 1), numbers, operators);
             Double result = calculate(numbers, operators);
             formattedExpression = formattedExpression.replace(inner, result.toString());
@@ -62,6 +63,7 @@ public class MathEvaluator {
                 .replaceAll("\\/", " / ")
                 .replaceAll("\\^", " ^ ")
                 .replaceAll("  - ", " -")
+                .replaceAll("\\( - ", "(-")
                 .replaceFirst("^ - ", "-");
     }
 }

@@ -122,22 +122,47 @@ public class MathEvaluatorTest {
 
         assertEquals(expected, new MathEvaluator().evaluateExpression(input), 1);
     }
-//    @Test
-//    public void getInnerExpression() {
-//        String input = "2 + (3 + 4) + 5";
-//        String expected = "(3 + 4)";
-//
-//        String inner = new MathEvaluator().getInnerExpression(input);
-//        assertEquals(expected, inner);
-//    }
-//    @Test
-//    public void getInnerExpressionIfNoBracket() {
-//        String input = "2 + 3 + 4 + 5";
-//        String expected = "(3 + 4)";
-//
-//        String inner = new MathEvaluator().getInnerExpression(input);
-//        assertNull(inner);
-//    }
+
+    @Test
+    public void getInnerExpression() {
+        String input = "2 + (3 + 4) + 5";
+        String expected = "(3 + 4)";
+
+        String inner = new MathEvaluator().getInnerExpression(input);
+        assertEquals(expected, inner);
+    }
+
+    @Test
+    public void evaluateExpressionWithBrackets() {
+        String input = "2 + (3 + 4) + 5";
+        double expected = 14;
+
+        assertEquals(expected, new MathEvaluator().evaluateExpression(input), 1);
+    }
+
+    @Test
+    public void evaluateExpressionWithMultipleBrackets() {
+        String input = "2 + (3 + 4) + (2-3)- 5";
+        double expected = 3;
+
+        assertEquals(expected, new MathEvaluator().evaluateExpression(input), 1);
+    }
+
+    @Test
+    public void evaluateExpressionWithBracketsWithinBrackets() {
+        String input = "2 + (4 + (4 + 2)-3)- 5";
+        double expected = 3;
+
+        assertEquals(expected, new MathEvaluator().evaluateExpression(input), 1);
+    }
+
+    @Test
+    public void testMohit() {
+        String input = "(4-(((5.5)+12)*10)-1)";
+        double expected = -172;
+
+        assertEquals(expected, new MathEvaluator().evaluateExpression(input), 1);
+    }
 
 //    @Test
 //    public void getInnerExpressionWithMultipleBrackets() {

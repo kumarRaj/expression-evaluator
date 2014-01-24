@@ -4,18 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MathEvaluator {
-
     public double evaluateExpression(String expression) {
         String formattedExpression = parseInput(expression);
         List<Double> numbers = new ArrayList<Double>();
         List<String> operators = new ArrayList<String>();
         String inner = getInnerExpression(formattedExpression);
         if (inner != null) {
-            System.out.println(inner);
             getNumbersAndOperators(inner.substring(1, inner.length() - 1), numbers, operators);
             Double result = calculate(numbers, operators);
             formattedExpression = formattedExpression.replace(inner, result.toString());
-            System.out.println(formattedExpression);
             return evaluateExpression(formattedExpression);
         }
         getNumbersAndOperators(formattedExpression, numbers, operators);
@@ -47,18 +44,8 @@ public class MathEvaluator {
     }
 
     public void getNumbersAndOperators(String expression, List<Double> numbers, List<String> operators) {
-//        String inner = getInnerExpression(expression);
-//        if(expression.contains("(")){
-//            getNumbersAndOperators(inner.substring(1,inner.length()-1),numbers,operators);
-//            double result = calculate(inner);
-//            expression.replace(inner," " + result + " ");
-//        }
-//        if(inner != null){
-//            calculate(inner);
-//        }
         String input[] = expression.split(" ");
-        for (int i = 0; i < input.length; i++) {
-            String s = input[i];
+        for (String s : input) {
             try {
                 numbers.add(Double.parseDouble(s));
             } catch (Exception ex) {
@@ -70,7 +57,7 @@ public class MathEvaluator {
     public String parseInput(String input) {
         return input.trim().replaceAll(" +", "")
                 .replaceAll("\\+", " + ")
-                .replaceAll("\\-"," - ")
+                .replaceAll("\\-", " - ")
                 .replaceAll("\\*", " * ")
                 .replaceAll("\\/", " / ")
                 .replaceAll("\\^", " ^ ")

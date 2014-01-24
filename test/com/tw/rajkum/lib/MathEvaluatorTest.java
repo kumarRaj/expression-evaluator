@@ -27,23 +27,23 @@ public class MathEvaluatorTest {
     }
     @Test
     public void testAddUsingEvaluator() throws Exception {
-        assertEquals(9,new MathEvaluator().calculate("4 + 5"),1);
+        assertEquals(9, new MathEvaluator().evaluateExpression("4 + 5"), 1);
     }
     @Test
     public void testSubtractUsingEvaluator() throws Exception {
-        assertEquals(1,new MathEvaluator().calculate("6 - 5"),1);
+        assertEquals(1, new MathEvaluator().evaluateExpression("6 - 5"), 1);
     }
     @Test
     public void testMultiplyUsingEvaluator() throws Exception {
-        assertEquals(20,new MathEvaluator().calculate("4 * 5"),1);
+        assertEquals(20, new MathEvaluator().evaluateExpression("4 * 5"), 1);
     }
     @Test
     public void testDivideUsingEvaluator() throws Exception {
-        assertEquals(3,new MathEvaluator().calculate("19 / 6"),1);
+        assertEquals(3, new MathEvaluator().evaluateExpression("19 / 6"), 1);
     }
     @Test
     public void testPowerUsingEvaluator() throws Exception {
-        assertEquals(64,new MathEvaluator().calculate("4 ^ 3"),1);
+        assertEquals(64, new MathEvaluator().evaluateExpression("4 ^ 3"), 1);
     }
     @Test
     public void testTrimSpacesOnRightOfExpression() {
@@ -104,22 +104,53 @@ public class MathEvaluatorTest {
     @Test
     public void calculateExpressionWithMultipleOperators() {
         String input = "4*   7 + 9 -2";
-        String expected = "35.0";
+        double expected = 35.0;
 
-        assertEquals(expected, new MathEvaluator().evaluateExpression(input));
+        assertEquals(expected, new MathEvaluator().evaluateExpression(input), 1);
     }
     @Test
     public void calculateExpressionWithMultipleOperatorsWithPower() {
         String input = "4* 3 ^2";
-        String expected = "144.0";
+        double expected = 144.0;
 
-        assertEquals(expected,new MathEvaluator().evaluateExpression(input));
+        assertEquals(expected, new MathEvaluator().evaluateExpression(input), 1);
     }
     @Test
     public void calculateExpressionWithResultAsMultipleDigitsAfterDecimal() {
         String input = "22/7";
-        String expected = "3.14";
+        double expected = 3.14;
 
-        assertEquals(expected,new MathEvaluator().evaluateExpression(input));
+        assertEquals(expected, new MathEvaluator().evaluateExpression(input), 1);
     }
+//    @Test
+//    public void getInnerExpression() {
+//        String input = "2 + (3 + 4) + 5";
+//        String expected = "(3 + 4)";
+//
+//        String inner = new MathEvaluator().getInnerExpression(input);
+//        assertEquals(expected, inner);
+//    }
+//    @Test
+//    public void getInnerExpressionIfNoBracket() {
+//        String input = "2 + 3 + 4 + 5";
+//        String expected = "(3 + 4)";
+//
+//        String inner = new MathEvaluator().getInnerExpression(input);
+//        assertNull(inner);
+//    }
+
+//    @Test
+//    public void getInnerExpressionWithMultipleBrackets() {
+//        String input = "2 + (3 + 4) + 5";
+//        List<String> expectedNumbers = new ArrayList<String>();
+//        List<String> expectedOperators = new ArrayList<String>();
+//        expectedNumbers.add("2");expectedNumbers.add("7");expectedNumbers.add("5");
+//        expectedNumbers.add("+");expectedNumbers.add("+");
+//        MathEvaluator test = new MathEvaluator();
+//        List<Double> numbers = new ArrayList<Double>();
+//        List<String> operators = new ArrayList<String>();
+//        test.getNumbersAndOperators(input, numbers, operators);
+//        assertEquals(expectedNumbers, numbers);
+//        assertEquals(expectedOperators, operators);
+//    }
 }

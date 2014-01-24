@@ -5,35 +5,55 @@ import java.util.List;
 
 public class MathEvaluator {
 
-    public String evaluateExpression(String expression){
+    public double evaluateExpression(String expression) {
         String formattedExpression = parseInput(expression);
-        Double result = calculate(formattedExpression);
-        String stringResult = result.toString();
-        int indexOfPoint = stringResult.indexOf('.');
-        try{
-            return stringResult.substring(0, indexOfPoint + 3);
-        } catch (StringIndexOutOfBoundsException ex){
-            return stringResult;
-        }
-    }
-
-    public double calculate(String expression) {
-        String input[] = expression.split(" ");
         List<Double> numbers = new ArrayList<Double>();
         List<String> operators = new ArrayList<String>();
-        getNumbersAndOperators(input, numbers, operators);
+        getNumbersAndOperators(formattedExpression, numbers, operators);
+        Double result = calculate(numbers, operators);
+        return result;
+    }
+
+    //    public String getInnerExpression(String array){
+//        char s;
+//        int start = 0,end = 0;
+//        for (int i = 0;i < array.length();i++) {
+//            s = array.charAt(i);
+//            if(s == '(')
+//                start = i;
+//            if(s == ')'){
+//                end = i;
+//                break;
+//            }
+//        }
+//        if(start == end)
+//            return null;
+//        return array.substring(start, end + 1);
+//    }
+    public double calculate(List<Double> numbers, List<String> operators) {
         for (int i = 0; i < operators.size(); i++) {
             numbers.set(i + 1, new MapOperator().getResultOfOperation(operators.get(i), numbers.get(i), numbers.get(i + 1)));
         }
         return numbers.get(numbers.size() - 1);
     }
 
-    private void getNumbersAndOperators(String[] input, List<Double> numbers, List<String> operators) {
-        for (String value : input) {
+    public void getNumbersAndOperators(String expression, List<Double> numbers, List<String> operators) {
+//        String inner = getInnerExpression(expression);
+//        if(expression.contains("(")){
+//            getNumbersAndOperators(inner.substring(1,inner.length()-1),numbers,operators);
+//            double result = calculate(inner);
+//            expression.replace(inner," " + result + " ");
+//        }
+//        if(inner != null){
+//            calculate(inner);
+//        }
+        String input[] = expression.split(" ");
+        for (int i = 0; i < input.length; i++) {
+            String s = input[i];
             try {
-                numbers.add(Double.parseDouble(value));
+                numbers.add(Double.parseDouble(s));
             } catch (Exception ex) {
-                operators.add(value);
+                operators.add(s);
             }
         }
     }

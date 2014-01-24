@@ -151,7 +151,7 @@ public class MathEvaluatorTest {
     @Test
     public void evaluateExpressionWithBracketsWithinBrackets() {
         String input = "2 + (4 + (4 + 2)-3)- 5";
-        double expected = 3;
+        double expected = 4;
 
         assertEquals(expected, new MathEvaluator().evaluateExpression(input), 0.5);
     }

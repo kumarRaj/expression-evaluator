@@ -4,36 +4,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MapOperator {
-    Expression getResultOfOperation(String operator, Expression a, Expression b) {
-        Map<String, Operator> operators = new HashMap<String, Operator>();
+    double getResultOfOperation(String operator, double a, double b) {
+        Map<String, Operator> operators = new HashMap<>();
         operators.put("+", new Operator() {
             @Override
-            public Expression operation(Expression a, Expression b) {
-                return new Expression(a.getValue() + b.getValue());
+            public double operation(double a, double b) {
+                return (a+ b);
             }
         });
         operators.put("-", new Operator() {
             @Override
-            public Expression operation(Expression a, Expression b) {
-                return new Expression(a.getValue() - b.getValue());
+            public double operation(double a, double b) {
+                return (a- b);
             }
         });
         operators.put("*", new Operator() {
             @Override
-            public Expression operation(Expression a, Expression b) {
-                return new Expression(a.getValue() * b.getValue());
+            public double operation(double a, double b) {
+                return (a* b);
             }
         });
         operators.put("/", new Operator() {
             @Override
-            public Expression operation(Expression a, Expression b) {
-                return new Expression(a.getValue() / b.getValue());
+            public double operation(double a, double b) {
+                return (a/ b);
             }
         });
         operators.put("^", new Operator() {
             @Override
-            public Expression operation(Expression a, Expression b) {
-                return new Expression(Math.pow(a.getValue(), b.getValue()));
+            public double operation(double a, double b) {
+                return (Math.pow(a, b));
             }
         });
         return operators.get(operator).operation(a, b);

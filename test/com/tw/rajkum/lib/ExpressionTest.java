@@ -7,32 +7,31 @@ import static org.junit.Assert.assertEquals;
 public class ExpressionTest {
     @Test
     public void testAddWithOperator() throws Exception {
-        assertEquals(11, new MapOperator().getResultOfOperation("+", new Expression(5), new Expression(6)).getValue(), 0.5);
+        assertEquals(11, new MapOperator().getResultOfOperation("+", 5, 6), 0.5);
     }
 
     @Test
     public void testSubtractWithOperator() throws Exception {
-        Expression resultOfOperation = new MapOperator().getResultOfOperation("-", new Expression(5), new Expression(6));
-        assertEquals(-1, resultOfOperation.getValue(), 0.5);
+        double resultOfOperation = new MapOperator().getResultOfOperation("-", 5, 6);
+        assertEquals(-1, resultOfOperation, 0.5);
     }
 
     @Test
     public void testMultiplyWithOperator() throws Exception {
-        Expression resultOfOperation1 = new MapOperator().getResultOfOperation("*", new Expression(5), new Expression(6));
-        Expression resultOfOperation = resultOfOperation1;
-        assertEquals(30, resultOfOperation.getValue(), 0.5);
+        double resultOfOperation = new MapOperator().getResultOfOperation("*", 5, 6);
+        assertEquals(30, resultOfOperation, 0.5);
     }
 
     @Test
     public void testDivideWithOperator() throws Exception {
-        Expression resultOfOperation = new MapOperator().getResultOfOperation("/", new Expression(30), new Expression(5));
-        assertEquals(6, resultOfOperation.getValue(), 0.5);
+        double resultOfOperation = new MapOperator().getResultOfOperation("/", 30, 5);
+        assertEquals(6, resultOfOperation, 0.5);
     }
 
     @Test
     public void testPowerWithOperator() throws Exception {
-        Expression resultOfOperation = new MapOperator().getResultOfOperation("^", new Expression(5), new Expression(2));
-        assertEquals(25, resultOfOperation.getValue(), 0.5);
+        double resultOfOperation = new MapOperator().getResultOfOperation("^", 5, 2);
+        assertEquals(25, resultOfOperation, 0.5);
     }
 
     @Test

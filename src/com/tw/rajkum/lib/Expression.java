@@ -55,8 +55,10 @@ public class Expression {
 
     private Expression calculate() {
         for (int i = 0; i < operators.size(); i++) {
-            numbers.set(i + 1, new MapOperator().
-                    getResultOfOperation(operators.get(i), numbers.get(i), numbers.get(i + 1)));
+            numbers.set(i + 1,new Expression(new MapOperator().
+                    getResultOfOperation(operators.get(i),
+                            numbers.get(i).getValue(),
+                            numbers.get(i + 1).getValue())));
         }
         return numbers.get(numbers.size() - 1);
     }

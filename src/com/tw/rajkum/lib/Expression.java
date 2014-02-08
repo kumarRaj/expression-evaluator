@@ -1,12 +1,14 @@
 package com.tw.rajkum.lib;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Expression {
 
     private final List<Double> numbers;
     private final List<String> operators;
+    private double value;
 
     public Expression() {
         numbers = new ArrayList<Double>();
@@ -48,17 +50,17 @@ public class Expression {
             numbers.set(i + 1, new MapOperator().
                     getResultOfOperation(operators.get(i), numbers.get(i), numbers.get(i + 1)));
         }
-        return numbers.get(numbers.size() - 1);
+        this.value = numbers.get(numbers.size() - 1);
+        return this.value;
     }
 
     public void getNumbersAndOperators(String expression) {
         String input[] = expression.split(" ");
+        String[] operatorsAllowed = {"+","-","*","^","/"};
         for (String s : input) {
-            try {
-                numbers.add(Double.parseDouble(s));
-            } catch (Exception ex) {
+            if(Arrays.asList(operatorsAllowed).indexOf(s)>-1)
                 operators.add(s);
-            }
+            else numbers.add(Double.parseDouble(s));
         }
     }
 

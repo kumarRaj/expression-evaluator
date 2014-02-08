@@ -4,38 +4,38 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MapOperator {
-    double getResultOfOperation(String operator,double a,double b){
-        Map<String,Operator> operators = new HashMap<String, Operator>();
-        operators.put("+",new Operator() {
+    Expression getResultOfOperation(String operator, Expression a, Expression b) {
+        Map<String, Operator> operators = new HashMap<String, Operator>();
+        operators.put("+", new Operator() {
             @Override
-            public double operation(double a, double b) {
-                return a + b;
+            public Expression operation(Expression a, Expression b) {
+                return new Expression(a.getValue() + b.getValue());
             }
         });
-        operators.put("-",new Operator() {
+        operators.put("-", new Operator() {
             @Override
-            public double operation(double a, double b) {
-                return a - b;
+            public Expression operation(Expression a, Expression b) {
+                return new Expression(a.getValue() - b.getValue());
             }
         });
-        operators.put("*",new Operator() {
+        operators.put("*", new Operator() {
             @Override
-            public double operation(double a, double b) {
-                return a * b;
+            public Expression operation(Expression a, Expression b) {
+                return new Expression(a.getValue() * b.getValue());
             }
         });
-        operators.put("/",new Operator() {
+        operators.put("/", new Operator() {
             @Override
-            public double operation(double a, double b) {
-                return a / b;
+            public Expression operation(Expression a, Expression b) {
+                return new Expression(a.getValue() / b.getValue());
             }
         });
-        operators.put("^",new Operator() {
+        operators.put("^", new Operator() {
             @Override
-            public double operation(double a, double b) {
-                return Math.pow(a,b);
+            public Expression operation(Expression a, Expression b) {
+                return new Expression(Math.pow(a.getValue(), b.getValue()));
             }
         });
-        return operators.get(operator).operation(a,b);
+        return operators.get(operator).operation(a, b);
     }
 }

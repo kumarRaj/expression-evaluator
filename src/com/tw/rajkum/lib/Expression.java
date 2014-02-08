@@ -6,13 +6,21 @@ import java.util.List;
 
 public class Expression {
 
-    private final List<Double> numbers;
-    private final List<String> operators;
+    private List<Expression> numbers;
+    private List<String> operators;
     private double value;
 
+    public double getValue() {
+        return value;
+    }
+
     public Expression() {
-        numbers = new ArrayList<Double>();
-        operators = new ArrayList<String>();
+        numbers = new ArrayList<>();
+        operators = new ArrayList<>();
+    }
+
+    public Expression(double value) {
+        this.value = value;
     }
 
     public double evaluate(String expression) {
@@ -20,12 +28,12 @@ public class Expression {
         String inner = getInnerExpression(formattedExpression);
         if (inner != null) {
             getNumbersAndOperators(inner.substring(1, inner.length() - 1));
-            Double result = calculate();
-            formattedExpression = formattedExpression.replace(inner, result.toString());
+            Expression result = calculate();
+            formattedExpression = formattedExpression.replace(inner, String.valueOf(result.getValue()));
             return new Expression().evaluate(formattedExpression);
         }
         getNumbersAndOperators(formattedExpression);
-        return calculate();
+        return calculate().value;
     }
 
     public String getInnerExpression(String array) {
@@ -45,22 +53,22 @@ public class Expression {
         return array.substring(start, end + 1);
     }
 
-    private double calculate() {
+    private Expression calculate() {
         for (int i = 0; i < operators.size(); i++) {
             numbers.set(i + 1, new MapOperator().
                     getResultOfOperation(operators.get(i), numbers.get(i), numbers.get(i + 1)));
         }
-        this.value = numbers.get(numbers.size() - 1);
-        return this.value;
+        return numbers.get(numbers.size() - 1);
     }
 
     public void getNumbersAndOperators(String expression) {
         String input[] = expression.split(" ");
         String[] operatorsAllowed = {"+","-","*","^","/"};
         for (String s : input) {
-            if(Arrays.asList(operatorsAllowed).indexOf(s)>-1)
+            if(Arrays.asList(operatorsAllowed).indexOf(s) > -1)
                 operators.add(s);
-            else numbers.add(Double.parseDouble(s));
+            else
+                numbers.add(new Expression(Double.parseDouble(s)));
         }
     }
 

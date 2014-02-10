@@ -1,8 +1,9 @@
 package com.tw.rajkum.lib;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+
 
 public class Expression {
 
@@ -15,47 +16,54 @@ public class Expression {
     }
 
     public Expression() {
-        numbers = new ArrayList<>();
-        operators = new ArrayList<>();
+        numbers = new LinkedList<>();
+        operators = new LinkedList<>();
     }
 
     public Expression(double value) {
         this.value = value;
     }
 
-    public double evaluate(String expression) {
+    public static boolean areDoublesEqual(double a, double b){
+        double DELTA = 0.0004;
+        return a == b || Math.abs(a - b) < DELTA;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Expression that = (Expression) o;
+        return areDoublesEqual(this.getValue(),that.getValue());
+    }
+
+    public Expression parse(String expression) {
         String formattedExpression = parseInput(expression);
         String inner = getInnerExpression(formattedExpression);
         if (inner != null) {
+
             getNumbersAndOperators(inner.substring(1, inner.length() - 1));
+
             Expression result = calculate();
             formattedExpression = formattedExpression.replace(inner, String.valueOf(result.getValue()));
-            return new Expression().evaluate(formattedExpression);
+            return new Expression().parse(formattedExpression);
         }
         getNumbersAndOperators(formattedExpression);
-        return calculate().value;
+        return this;
     }
 
     public String getInnerExpression(String array) {
-        char s;
-        int start = 0, end = 0;
-        for (int i = 0; i < array.length(); i++) {
-            s = array.charAt(i);
-            if (s == '(')
-                start = i;
-            if (s == ')') {
-                end = i;
-                break;
-            }
-        }
+        int start, end;
+        start = array.indexOf("(");
+        end = array.lastIndexOf(")");
         if (start == end)
             return null;
         return array.substring(start, end + 1);
     }
 
-    private Expression calculate() {
+    public Expression calculate() {
         for (int i = 0; i < operators.size(); i++) {
-            numbers.set(i + 1,new Expression(new MapOperator().
+            numbers.set(i + 1, new Expression(new MapOperator().
                     getResultOfOperation(operators.get(i),
                             numbers.get(i).getValue(),
                             numbers.get(i + 1).getValue())));
@@ -63,11 +71,11 @@ public class Expression {
         return numbers.get(numbers.size() - 1);
     }
 
-    public void getNumbersAndOperators(String expression) {
+    private void getNumbersAndOperators(String expression) {
         String input[] = expression.split(" ");
-        String[] operatorsAllowed = {"+","-","*","^","/"};
+        String[] operatorsAllowed = {"+", "-", "*", "^", "/"};
         for (String s : input) {
-            if(Arrays.asList(operatorsAllowed).indexOf(s) > -1)
+            if (Arrays.asList(operatorsAllowed).indexOf(s) > -1)
                 operators.add(s);
             else
                 numbers.add(new Expression(Double.parseDouble(s)));

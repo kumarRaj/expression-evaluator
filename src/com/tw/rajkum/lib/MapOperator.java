@@ -9,25 +9,25 @@ public class MapOperator {
         operators.put("+", new Operator() {
             @Override
             public double operation(double a, double b) {
-                return (a+ b);
+                return (a + b);
             }
         });
         operators.put("-", new Operator() {
             @Override
             public double operation(double a, double b) {
-                return (a- b);
+                return (a - b);
             }
         });
         operators.put("*", new Operator() {
             @Override
             public double operation(double a, double b) {
-                return (a* b);
+                return (a * b);
             }
         });
         operators.put("/", new Operator() {
             @Override
             public double operation(double a, double b) {
-                return (a/ b);
+                return (a / b);
             }
         });
         operators.put("^", new Operator() {

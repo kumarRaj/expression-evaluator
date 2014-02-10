@@ -8,7 +8,7 @@ package com.tw.rajkum.lib;
 import java.util.Arrays;
 import java.util.List;
 
-public class Tokenizer {
+public class Scanner {
     private String expression;
     int index;
     Character[] operators = {'+', '-', '*', '/', '^', '(', ')'};
@@ -17,7 +17,7 @@ public class Tokenizer {
     List<Character> operatorsList = Arrays.asList(operators);
     List<Character> numberList = Arrays.asList(numbers);
 
-    public Tokenizer(String expression) {
+    public Scanner(String expression) {
         this.expression = expression;
         index = 0;
     }
